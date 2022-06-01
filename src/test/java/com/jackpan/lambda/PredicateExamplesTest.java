@@ -2,14 +2,16 @@ package com.jackpan.lambda;
 
 import com.jackpan.dataentity.DepartureDelays;
 import com.opencsv.CSVReader;
-import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+
 
 /**
  * PredicateExamplesTest操作类
@@ -20,6 +22,8 @@ import java.util.List;
 public class PredicateExamplesTest {
 
     private static List<DepartureDelays> originList;
+
+    private PredicateExamples predicateExamples = new PredicateExamples();
 
     /**
      * Load test data from data/departuredelays.csv
@@ -46,10 +50,20 @@ public class PredicateExamplesTest {
         System.out.println();
     }
 
+    /**
+     * Suppose you provide a method that caller can make his condition flexible.
+     * @throws Exception
+     */
     @Test
-    public void csvReaderTest() throws Exception {
+    public void singleFilterTest() throws Exception {
+        // Find delay greater than 0.
+        List<DepartureDelays> delays = predicateExamples.singleFilter(originList, data -> data.getDelay() > 0);
+        assertEquals(delays.size(), 1129);
+        // Find origin airport is ABE.
+        List<DepartureDelays> originABE = predicateExamples.singleFilter(originList, data -> "ABE".equals(data.getOrigin()));
+        assertEquals(originABE.size(), 135);
 
-        System.out.println();
+        // And you can do else something.
     }
 
 }

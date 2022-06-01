@@ -75,3 +75,20 @@ for (int i = 1; i < list.size(); i++) {
 }
 ```
 
+
+
+## Core Functional Examples
+
+### Predicate Examples
+
+Suppose you want to filter something that the condition is define by  caller. You can define method throw  Predicate functional class as a variable. And you can define filter method like below:
+
+```java
+// You can find delay greater than 0.
+List<DepartureDelays> delays = predicateExamples.singleFilter(originList, data -> data.getDelay() > 0);
+assertEquals(delays.size(), 1129);
+//  You can find origin airport is ABE.
+List<DepartureDelays> originABE = predicateExamples.singleFilter(originList, data -> "ABE".equals(data.getOrigin()));
+assertEquals(originABE.size(), 135);
+```
+
