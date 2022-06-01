@@ -66,4 +66,17 @@ public class PredicateExamplesTest {
         // And you can do else something.
     }
 
+    /**
+     * Suppose you want to add two condition with and expression.
+     */
+    @Test
+    public void doubleAndFilter() {
+        // You can find delay greater than 0 and origin airport is ABE.
+        List<DepartureDelays> dataList = predicateExamples.doubleAndFilter(originList,
+                data -> data.getDelay() > 0,
+                data -> "ABE".equals(data.getOrigin()));
+
+        assertEquals(dataList.size(), 39);
+    }
+
 }

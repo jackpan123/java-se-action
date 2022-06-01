@@ -20,13 +20,36 @@ public class PredicateExamples {
      * Single condition filter
      *
      * @param originList origin data list
-     * @param predicate condition filter
+     * @param condition condition filter
      * @return filter data list.
      */
-    public List<DepartureDelays> singleFilter(List<DepartureDelays> originList, Predicate<DepartureDelays> predicate) {
+    public List<DepartureDelays> singleFilter(List<DepartureDelays> originList,
+                                              Predicate<DepartureDelays> condition) {
         List<DepartureDelays> newList = new ArrayList<>();
         for (DepartureDelays departureDelays : originList) {
-            if (predicate.test(departureDelays)) {
+            if (condition.test(departureDelays)) {
+                newList.add(departureDelays);
+            }
+        }
+        return newList;
+    }
+
+
+    /**
+     * Double And condition filter
+     *
+     * @param originList origin data list
+     * @param firstCondition first condition
+     * @param secondCondition second condition
+     * @return filter data list.
+     */
+    public List<DepartureDelays> doubleAndFilter(List<DepartureDelays> originList,
+                                              Predicate<DepartureDelays> firstCondition,
+                                              Predicate<DepartureDelays> secondCondition) {
+
+        List<DepartureDelays> newList = new ArrayList<>();
+        for (DepartureDelays departureDelays : originList) {
+            if (firstCondition.and(secondCondition).test(departureDelays)) {
                 newList.add(departureDelays);
             }
         }
