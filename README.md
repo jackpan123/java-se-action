@@ -81,7 +81,7 @@ for (int i = 1; i < list.size(); i++) {
 
 ### Predicate Examples
 
-Suppose you want to filter something that the condition is define by  caller. You can define method throw  Predicate functional class as a variable. And you can define filter method like below:
+Suppose you want to filter something that the condition is defined by caller. You can define the method throw  Predicate functional class, as a variable. And you can define the filter method like below:
 
 ```java
 // You can find delay greater than 0.
@@ -94,7 +94,7 @@ assertEquals(originABE.size(), 135);
 
 
 
-Suppose  You  want find delay greater than 0 and origin airport is ABE. You should define doubleAndFilter method and accept two conditon variables.
+Suppose You want to find delay greater than 0 and the origin airport is ABE. You should define the doubleAndFilter method and accept two condition variables.
 
 ```java
 // You can find delay greater than 0 and origin airport is ABE.
@@ -104,7 +104,7 @@ List<DepartureDelays> dataList = predicateExamples.doubleAndFilter(originList,
 assertEquals(dataList.size(), 39);
 ```
 
-Suppose  You  want find delay greater than 0 or origin airport is ABE. You should define doubleOrFilter method and accept two conditon variables.
+Suppose You want to find delay greater than 0 or the origin airport is ABE. You should define the doubleAndFilter method and accept two condition variables.
 
 ```java
 // You can find delay greater than 0 and origin airport is ABE.
