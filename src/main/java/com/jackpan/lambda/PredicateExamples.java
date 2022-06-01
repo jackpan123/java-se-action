@@ -78,4 +78,23 @@ public class PredicateExamples {
     }
 
 
+    /**
+     * Single condition filter
+     *
+     * @param originList origin data list
+     * @param excludeCondition exclude condition filter
+     * @return filter data list.
+     */
+    public List<DepartureDelays> excludeFilter(List<DepartureDelays> originList,
+                                              Predicate<DepartureDelays> excludeCondition) {
+        List<DepartureDelays> newList = new ArrayList<>();
+        for (DepartureDelays departureDelays : originList) {
+            if (excludeCondition.negate().test(departureDelays)) {
+                newList.add(departureDelays);
+            }
+        }
+        return newList;
+    }
+
+
 }

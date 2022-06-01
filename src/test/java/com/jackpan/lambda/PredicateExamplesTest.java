@@ -92,4 +92,17 @@ public class PredicateExamplesTest {
         assertEquals(dataList.size(), 1225);
     }
 
+    /**
+     * Suppose you provide a method that caller can make his condition flexible.
+     * @throws Exception
+     */
+    @Test
+    public void excludeFilterTest() throws Exception {
+        // Find origin airport is not ABI.
+        List<DepartureDelays> originABE = predicateExamples.excludeFilter(originList, data -> "ABI".equals(data.getOrigin()));
+
+        assertEquals(originABE.size(), 2756);
+
+    }
+
 }

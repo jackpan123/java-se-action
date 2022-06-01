@@ -81,6 +81,8 @@ for (int i = 1; i < list.size(); i++) {
 
 ### Predicate Examples
 
+#### singleFilter
+
 Suppose you want to filter something that the condition is defined by caller. You can define the method throw  Predicate functional class, as a variable. And you can define the filter method like below:
 
 ```java
@@ -89,10 +91,11 @@ List<DepartureDelays> delays = predicateExamples.singleFilter(originList, data -
 assertEquals(delays.size(), 1129);
 //  You can find origin airport is ABE.
 List<DepartureDelays> originABE = predicateExamples.singleFilter(originList, data -> "ABE".equals(data.getOrigin()));
-assertEquals(originABE.size(), 135);
 ```
 
 
+
+#### doubleAndFilter
 
 Suppose You want to find delay greater than 0 and the origin airport is ABE. You should define the doubleAndFilter method and accept two condition variables.
 
@@ -101,8 +104,11 @@ Suppose You want to find delay greater than 0 and the origin airport is ABE. You
 List<DepartureDelays> dataList = predicateExamples.doubleAndFilter(originList,
                                                                    data -> data.getDelay() > 0,
                                                                    data -> "ABE".equals(data.getOrigin()));
-assertEquals(dataList.size(), 39);
 ```
+
+
+
+#### doubleOrFilter
 
 Suppose You want to find delay greater than 0 or the origin airport is ABE. You should define the doubleAndFilter method and accept two condition variables.
 
@@ -111,6 +117,17 @@ Suppose You want to find delay greater than 0 or the origin airport is ABE. You 
 List<DepartureDelays> dataList = predicateExamples.doubleOrFilter(originList,
                                                                    data -> data.getDelay() > 0,
                                                                    data -> "ABE".equals(data.getOrigin()));
-assertEquals(dataList.size(), 1225);
+```
+
+
+
+#### excludeFilter
+
+Suppose You want to find the origin airport is not ABI. 
+
+```java
+// Find origin airport is not ABI.
+List<DepartureDelays> originABE = predicateExamples.excludeFilter(originList, data -> "ABI".equals(data.getOrigin()));
+
 ```
 
