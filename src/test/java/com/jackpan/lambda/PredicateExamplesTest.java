@@ -70,13 +70,26 @@ public class PredicateExamplesTest {
      * Suppose you want to add two condition with and expression.
      */
     @Test
-    public void doubleAndFilter() {
+    public void doubleAndFilterTest() {
         // You can find delay greater than 0 and origin airport is ABE.
         List<DepartureDelays> dataList = predicateExamples.doubleAndFilter(originList,
                 data -> data.getDelay() > 0,
                 data -> "ABE".equals(data.getOrigin()));
 
         assertEquals(dataList.size(), 39);
+    }
+
+    /**
+     * Suppose you want to add two condition with or expression.
+     */
+    @Test
+    public void doubleOrFilterTest() {
+        // You can find delay greater than 0 or origin airport is ABE.
+        List<DepartureDelays> dataList = predicateExamples.doubleOrFilter(originList,
+                data -> data.getDelay() > 0,
+                data -> "ABE".equals(data.getOrigin()));
+
+        assertEquals(dataList.size(), 1225);
     }
 
 }

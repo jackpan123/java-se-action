@@ -104,3 +104,13 @@ List<DepartureDelays> dataList = predicateExamples.doubleAndFilter(originList,
 assertEquals(dataList.size(), 39);
 ```
 
+Suppose  You  want find delay greater than 0 or origin airport is ABE. You should define doubleOrFilter method and accept two conditon variables.
+
+```java
+// You can find delay greater than 0 and origin airport is ABE.
+List<DepartureDelays> dataList = predicateExamples.doubleOrFilter(originList,
+                                                                   data -> data.getDelay() > 0,
+                                                                   data -> "ABE".equals(data.getOrigin()));
+assertEquals(dataList.size(), 1225);
+```
+

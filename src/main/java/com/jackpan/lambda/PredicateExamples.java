@@ -56,5 +56,26 @@ public class PredicateExamples {
         return newList;
     }
 
+    /**
+     * Double Or condition filter
+     *
+     * @param originList origin data list
+     * @param firstCondition first condition
+     * @param secondCondition second condition
+     * @return filter data list.
+     */
+    public List<DepartureDelays> doubleOrFilter(List<DepartureDelays> originList,
+                                                 Predicate<DepartureDelays> firstCondition,
+                                                 Predicate<DepartureDelays> secondCondition) {
+
+        List<DepartureDelays> newList = new ArrayList<>();
+        for (DepartureDelays departureDelays : originList) {
+            if (firstCondition.or(secondCondition).test(departureDelays)) {
+                newList.add(departureDelays);
+            }
+        }
+        return newList;
+    }
+
 
 }
