@@ -116,6 +116,7 @@ public class PredicateExamplesTest {
         list.add(name1);
         List<String> equalFilter = predicateExamples.isEqualFilter(list, Predicate.isEqual(name));
         assertEquals(equalFilter.size(), 2);
+
     }
 
 }

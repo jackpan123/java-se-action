@@ -147,3 +147,7 @@ list.add(name1);
 List<String> equalFilter = predicateExamples.isEqualFilter(list, Predicate.isEqual(name));
 ```
 
+### conclusion
+
+Your original data is primitive types like int, double, long etc and you want to use Predicate to filter data and you should use IntPredicate or LongPredicate etc.
+
