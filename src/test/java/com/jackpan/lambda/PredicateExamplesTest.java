@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -103,6 +104,18 @@ public class PredicateExamplesTest {
 
         assertEquals(originABE.size(), 2756);
 
+    }
+
+    @Test
+    public void isEqualFilterTest() {
+        String name = "Jack";
+        String name1 = "Jack1";
+        List<String> list = new ArrayList<>();
+        list.add(name);
+        list.add(name);
+        list.add(name1);
+        List<String> equalFilter = predicateExamples.isEqualFilter(list, Predicate.isEqual(name));
+        assertEquals(equalFilter.size(), 2);
     }
 
 }

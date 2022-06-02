@@ -96,5 +96,23 @@ public class PredicateExamples {
         return newList;
     }
 
+    /**
+     * filter id
+     *
+     * @param originList origin data list
+     * @param isEqualCondition exclude condition filter
+     * @return filter data list.
+     */
+    public List<String> isEqualFilter(List<String> originList,
+                                               Predicate<String> isEqualCondition) {
+        List<String> newList = new ArrayList<>();
+        for (String name : originList) {
+            if (isEqualCondition.test(name)) {
+                newList.add(name);
+            }
+        }
+        return newList;
+    }
+
 
 }

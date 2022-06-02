@@ -123,11 +123,27 @@ List<DepartureDelays> dataList = predicateExamples.doubleOrFilter(originList,
 
 #### excludeFilter
 
-Suppose You want to find the origin airport is not ABI. 
+Suppose you want to find the origin airport is not ABI. 
 
 ```java
 // Find origin airport is not ABI.
 List<DepartureDelays> originABE = predicateExamples.excludeFilter(originList, data -> "ABI".equals(data.getOrigin()));
 
+```
+
+
+
+#### isEqualFilter
+
+Suppose you want to find some equals thing. like the same name Jack:
+
+```java
+String name = "Jack";
+String name1 = "Jack1";
+List<String> list = new ArrayList<>();
+list.add(name);
+list.add(name);
+list.add(name1);
+List<String> equalFilter = predicateExamples.isEqualFilter(list, Predicate.isEqual(name));
 ```
 
